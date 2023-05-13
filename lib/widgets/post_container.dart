@@ -130,7 +130,7 @@ class _PostStats extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(4.0),
               decoration: BoxDecoration(
-                color: Palette.facebookBlue,
+                color: Palette.tyldcYellow,
                 shape: BoxShape.circle,
               ),
               child: const Icon(

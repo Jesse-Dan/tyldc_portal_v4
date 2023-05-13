@@ -104,7 +104,7 @@ class _StoryCard extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     icon: const Icon(Icons.add),
                     iconSize: 30.0,
-                    color: Palette.facebookBlue,
+                    color: Palette.tyldcYellow,
                     onPressed: () => print('Add to Story'),
                   ),
                 )

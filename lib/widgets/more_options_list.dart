@@ -8,10 +8,10 @@ class MoreOptionsList extends StatelessWidget {
   final List<List> _moreOptionsList = const [
     [MdiIcons.shieldAccount, Colors.deepPurple, 'Reported Accounts', null],
     [MdiIcons.accountMultiple, Colors.cyan, 'Friends', null],
-    [MdiIcons.facebookMessenger, Palette.facebookBlue, 'Chats', null],
+    [MdiIcons.facebookMessenger, Palette.tyldcYellow, 'Chats', null],
     [MdiIcons.flag, Colors.orange, 'Pages', null],
-    [MdiIcons.storefront, Palette.facebookBlue, 'Events', null],
-    [Icons.ondemand_video, Palette.facebookBlue, 'Watch', null],
+    [MdiIcons.storefront, Palette.tyldcYellow, 'Events', null],
+    [Icons.ondemand_video, Palette.tyldcYellow, 'Watch', null],
     [
       MdiIcons.contentSaveAlert,
       Colors.purpleAccent,
@@ -33,16 +33,18 @@ class MoreOptionsList extends StatelessWidget {
   ];
 
   final User currentUser;
+  final double maxWidth;
 
   const MoreOptionsList({
     Key key,
+    @required this.maxWidth,
     @required this.currentUser,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: 280.0),
+      constraints: BoxConstraints(maxWidth: maxWidth ?? 280.0),
       child: ListView.builder(
         itemCount: 1 + _moreOptionsList.length,
         itemBuilder: (BuildContext context, int index) {
@@ -84,18 +86,7 @@ class _Option extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onHover: ((value) {
-        return dropdownMenuItem != null
-            ? PopupMenuButton(
-                itemBuilder: (context) => dropdownMenuItem
-                    .map((String value) => PopupMenuItem<String>(
-                          child: Text(value),
-                          value: value,
-                        ))
-                    .toList(),
-                onSelected: (_) {})
-            : null;
-      }),
+      onHover: ((value) {}),
       onTap: () => print(label),
       child: ListTile(
         contentPadding: EdgeInsets.all(5),
@@ -108,17 +99,7 @@ class _Option extends StatelessWidget {
           ),
         ),
         trailing: dropdownMenuItem != null
-            ? DropdownButtonHideUnderline(
-                child: DropdownButton(
-                    borderRadius: BorderRadius.circular(15),
-                    icon: Icon(Icons.expand_more_rounded),
-                    items: dropdownMenuItem
-                        .map((String value) => DropdownMenuItem<String>(
-                              child: Text(value),
-                              value: value,
-                            ))
-                        .toList(),
-                    onChanged: (_) {}))
+            ? _DropDownWidget(dropdownMenuItem: dropdownMenuItem)
             : null,
       ),
 
@@ -135,6 +116,34 @@ class _Option extends StatelessWidget {
       //     ),
       //   ],
       // ),
+    );
+  }
+}
+
+class _DropDownWidget extends StatelessWidget {
+  const _DropDownWidget({
+    Key key,
+    @required this.dropdownMenuItem,
+  }) : super(key: key);
+
+  final List<String> dropdownMenuItem;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonHideUnderline(
+      child: DropdownButton(
+        elevation: 0,
+        enableFeedback: false,
+        borderRadius: BorderRadius.circular(15),
+        icon: Icon(Icons.more_horiz_rounded),
+        items: dropdownMenuItem
+            .map((String value) => DropdownMenuItem<String>(
+                  child: Text(value),
+                  value: value,
+                ))
+            .toList(),
+        onChanged: (_) {},
+      ),
     );
   }
 }

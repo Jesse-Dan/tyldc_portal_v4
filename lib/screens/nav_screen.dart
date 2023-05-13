@@ -5,6 +5,7 @@ import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class NavScreen extends StatefulWidget {
+  static const routeName = '/nav.bar';
   @override
   _NavScreenState createState() => _NavScreenState();
 }
@@ -16,7 +17,18 @@ class _NavScreenState extends State<NavScreen> {
     Scaffold(),
     Scaffold(),
     Scaffold(),
-    Scaffold(),
+    Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
+      body: SizedBox(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: MoreOptionsList(
+              currentUser: currentUser, maxWidth: double.infinity),
+        ),
+      ),
+    ),
   ];
   final List<IconData> _icons = const [
     Icons.home,
@@ -41,7 +53,7 @@ class _NavScreenState extends State<NavScreen> {
                   currentUser: currentUser,
                   icons: _icons,
                   selectedIndex: _selectedIndex,
-                   onTap: (index) => setState(() => _selectedIndex = index),
+                  onTap: (index) => setState(() => _selectedIndex = index),
                 ),
               )
             : null,

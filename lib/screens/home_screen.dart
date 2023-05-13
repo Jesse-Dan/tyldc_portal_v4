@@ -7,6 +7,7 @@ import 'package:flutter_facebook_responsive_ui/widgets/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const routeName = '/';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -56,7 +57,7 @@ class _HomeScreenMobile extends StatelessWidget {
           title: Text(
             'TYLDC',
             style: const TextStyle(
-              color: Palette.facebookBlue,
+              color: Palette.tyldcYellow,
               fontSize: 28.0,
               fontWeight: FontWeight.bold,
               letterSpacing: -1.2,
@@ -75,7 +76,8 @@ class _HomeScreenMobile extends StatelessWidget {
               iconSize: 30.0,
               onPressed: () => print('Chats'),
             ),
-          ], systemOverlayStyle: SystemUiOverlayStyle.dark,
+          ],
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
         ),
         SliverToBoxAdapter(
           child: CreatePostContainer(currentUser: currentUser),
@@ -122,7 +124,7 @@ class _HomeScreenDesktop extends StatelessWidget {
     return Row(
       children: [
         Flexible(
-          flex: 2,
+          flex: 3,
           child: Align(
             alignment: Alignment.centerLeft,
             child: Padding(
