@@ -29,6 +29,9 @@ dependencies:
   cupertino_icons: ^1.0.5
   cached_network_image: ^3.2.3
   material_design_icons_flutter: ^6.0.7096
+  bloc: ^8.1.1
+  google_fonts: ^4.0.4
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

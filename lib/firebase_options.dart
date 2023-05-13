@@ -23,7 +23,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -64,16 +67,5 @@ class DefaultFirebaseOptions {
     projectId: 'tyldc-registry',
     databaseURL: 'https://tyldc-registry-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'tyldc-registry.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCK9BY3kCMUO1vCKwpEek8X7Uh92CDv4Zo',
-    appId: '1:390567584749:ios:59c85474782ddf87d57de4',
-    messagingSenderId: '390567584749',
-    projectId: 'tyldc-registry',
-    databaseURL: 'https://tyldc-registry-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'tyldc-registry.appspot.com',
-    iosClientId: '390567584749-c4olsgucv2lu83v63cs0i5io8j8r9q92.apps.googleusercontent.com',
-    iosBundleId: 'com.example.flutterFacebookResponsiveUi',
   );
 }
